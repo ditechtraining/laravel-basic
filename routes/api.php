@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 Route::prefix('/company')->group(function () {
     Route::get('/', 'CompanyController@index');
     Route::get('/{company}', 'CompanyController@show');
