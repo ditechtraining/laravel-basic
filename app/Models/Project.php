@@ -30,8 +30,9 @@ class Project extends Model
     /**
      * @return MorphMany
      */
-    public function comments() : MorphMany
+    public function comments() : HasMany
     {
-        return $this->morphMany('App\Models\Comment', 'commentable');
+        //return $this->morphMany('App\Models\Comment', 'commentable');
+        return this->$this->hasMany(Comment::class)
     }
 }
