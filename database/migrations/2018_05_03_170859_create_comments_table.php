@@ -24,6 +24,8 @@ class CreateCommentsTable extends Migration
 
             $table->text('comment');
 
+            $table->morphs('commentable');
+
             $table->timestamps();
 
             $table->foreign('project_id')

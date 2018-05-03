@@ -14,7 +14,7 @@ class Task extends Model
     /**
      * @return BelongsTo
      */
-    public function projects() : BelongsTo
+    public function projects(): BelongsTo
     {
         return $this->belongsTo(Project::class);
     }
@@ -25,5 +25,13 @@ class Task extends Model
     public function workTimes()
     {
         return $this->hasMany(TaskWorkTime::class, 'task_id');
+    }
+
+    /**
+     * @return MorphMany
+     */
+    public function comments() : MorphMany
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
     }
 }
