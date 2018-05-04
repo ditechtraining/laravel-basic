@@ -20,10 +20,14 @@ use Illuminate\Support\Collection;
 class CompanyController extends Controller
 {
     /**
-     * @return JsonResponse
+     * @return CompanyCollection
      */
     public function index()
     {
+        /*app('myclass')->helloWorld();
+
+        exit;
+*/
         return new CompanyCollection(Company::paginate());
     }
 
