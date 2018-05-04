@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProjectRequest;
 use App\Http\Requests\ProjectWithoutCompanyParamRequest;
+use App\Http\Resources\ProjectResource;
 use App\Models\Company;
 use App\Models\Project;
 use Illuminate\Http\JsonResponse;
@@ -12,14 +13,11 @@ use Illuminate\Http\Response;
 class ProjectController extends Controller
 {
     /**
-     * @return JsonResponse
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return new JsonResponse(
-            Project::all(),
-            Response::HTTP_OK
-        );
+        return ProjectResource::collection(Project::all());
     }
 
     /**

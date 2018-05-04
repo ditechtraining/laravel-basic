@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
+use App\Http\Resources\CompanyCollection;
+use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -22,19 +24,16 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return new JsonResponse(
-            Company::all(),
-        Response::HTTP_OK
-        );
+        return new CompanyCollection(Company::paginate());
     }
 
     /**
      * @param Company $company
-     * @return Company
+     * @return CompanyResource
      */
-    public function show(Company $company) : Company
+    public function show(Company $company) : CompanyResource
     {
-        return $company;
+        return new CompanyResource($company);
     }
 
     public function create(CompanyRequest $request)
